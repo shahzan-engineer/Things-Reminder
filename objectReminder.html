@@ -4,373 +4,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f7f7fb">
 
-    <title>KeyMate — Remember What Matters</title>
+    <meta
+        name="description"
+        content="KeyMate helps you remember the important things before leaving home."
+    >
 
-    <link rel="stylesheet" href="./objectReminder.css">
-   
+    <title>KeyMate — Never Forget What Matters</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript tu khud likhega -->
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="app-shell">
+    <main class="app-container">
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <a href="#home" class="brand">
-                <span class="brand-icon">K</span>
-                <span>keymate<span class="brand-dot">.</span></span>
-            </a>
-
-            <div class="workspace-label">YOUR WORKSPACE</div>
-
-            <nav class="navigation">
-                <a href="#home" class="nav-item active">
-                    <span class="nav-icon">⌂</span>
-                    Home
-                </a>
-
-                <a href="#routines" class="nav-item">
-                    <span class="nav-icon">↻</span>
-                    My routines
-                </a>
-
-                <a href="#essentials" class="nav-item">
-                    <span class="nav-icon">⌘</span>
-                    Essentials
-                </a>
-
-                <a href="#settings" class="nav-item">
-                    <span class="nav-icon">⚙</span>
-                    Settings
-                </a>
-            </nav>
-
-            <div class="sidebar-bottom">
-                <div class="sidebar-tip">
-                    <div class="tip-icon">✦</div>
-                    <h3>Build the habit.</h3>
-                    <p>A little consistency today means fewer forgotten things tomorrow.</p>
+        <!-- Header -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="8" cy="15" r="5"
+                            stroke="currentColor" stroke-width="2.2"/>
+                        <path d="M11.5 11.5L21 2L23 4L20 7L22 9L19 12L17 10L15 12"
+                            stroke="currentColor"
+                            stroke-width="2.2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            transform="translate(-1 -1) scale(.95)"/>
+                    </svg>
                 </div>
 
-                <div class="sidebar-footer">
-                    MADE FOR YOUR EVERYDAY LIFE
+                <div>
+                    <h1 class="brand-name">Key<span>Mate</span></h1>
+                    <p class="brand-tagline">
+                        Never forget what matters.
+                    </p>
                 </div>
             </div>
-        </aside>
 
-        <!-- Main -->
-        <main class="main-content" id="home">
+            <div class="theme-indicator" aria-label="Dark theme enabled">
+                <svg viewBox="0 0 24 24" fill="currentColor"
+                    aria-hidden="true">
+                    <path d="M20.2 15.1A8.7 8.7 0 0 1 8.9 3.8
+                    8.9 8.9 0 1 0 20.2 15.1Z"/>
+                </svg>
+            </div>
+        </header>
 
-            <header class="topbar">
-                <div class="breadcrumb">
-                    My space <span>/</span> Home
-                </div>
+        <form id="reminderForm">
 
-                <div class="topbar-right">
-                    <div class="connection-status">
-                        <span class="status-dot"></span>
-                        Personal assistant
-                    </div>
-
-                    <div class="avatar">S</div>
-                </div>
-            </header>
-
-            <!-- Welcome -->
-            <section class="welcome-card">
-                <div class="welcome-content">
-                    <span class="welcome-label">YOUR DAILY COMPANION</span>
-
-                    <h1>Leave the house.<br>
-                        <span>Leave nothing behind.</span>
-                    </h1>
-
-                    <p>
-                        Your keys have a place. Your routine has a rhythm.
-                        Let's make remembering effortless.
-                    </p>
-
-                    <a href="#routines" class="welcome-button">
-                        Set up my routine <span>→</span>
-                    </a>
-                </div>
-
-                <div class="hero-illustration" aria-hidden="true">
-                    <div class="hero-circle circle-one"></div>
-                    <div class="hero-circle circle-two"></div>
-
-                    <div class="keyring">
-                        <div class="keyring-loop"></div>
-                        <div class="key-shaft"></div>
-                        <div class="key-teeth"></div>
-                        <div class="key-head"></div>
-                    </div>
-
-                    <div class="floating-label label-top">
-                        <span>✦</span> Never forget
-                    </div>
-
-                    <div class="floating-label label-bottom">
-                        Your keys, accounted for.
-                    </div>
-                </div>
-            </section>
-
-            <!-- Quick overview -->
-            <section class="overview-grid">
-                <article class="overview-card">
-                    <div class="overview-heading">
-                        <span>Today's routines</span>
-                        <span class="overview-icon purple-icon">↻</span>
-                    </div>
-                    <div class="overview-number" id="routineCount">0</div>
-                    <p>Habits to follow today</p>
-                </article>
-
-                <article class="overview-card">
-                    <div class="overview-heading">
-                        <span>Essentials</span>
-                        <span class="overview-icon orange-icon">⌘</span>
-                    </div>
-                    <div class="overview-number" id="essentialCount">0</div>
-                    <p>Things to remember</p>
-                </article>
-
-                <article class="overview-card">
-                    <div class="overview-heading">
-                        <span>Habits completed</span>
-                        <span class="overview-icon green-icon">✓</span>
-                    </div>
-                    <div class="overview-number" id="completedCount">0</div>
-                    <p>Completed today</p>
-                </article>
-            </section>
-
-            <!-- Key reminder -->
-            <section class="section-card key-section" id="essentials">
+            <!-- Section 1: Reminder item -->
+            <section class="panel" aria-labelledby="itemHeading">
 
                 <div class="section-heading">
-                    <div>
-                        <span class="section-eyebrow">YOUR MOST IMPORTANT ESSENTIAL</span>
-                        <h2>Key reminder</h2>
-                        <p>One small check. One less thing to worry about.</p>
-                    </div>
-
-                    <span class="key-section-icon">⚿</span>
+                    <span class="section-number">01</span>
+                    <h2 id="itemHeading">Kya remind karana hai?</h2>
                 </div>
 
-                <div class="key-reminder-card">
-                    <div class="key-visual">
-                        <span class="key-emoji">🔑</span>
-                    </div>
+                <label for="reminderItem" class="field-label">
+                    Kis cheez ki reminder chahiye?
+                </label>
 
-                    <div class="key-info">
-                        <h3>House keys</h3>
-                        <p>Keep them in one fixed place, every single time.</p>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        aria-hidden="true">
+                        <circle cx="8" cy="15" r="5"
+                            stroke="currentColor" stroke-width="2"/>
+                        <path d="M11.5 11.5L21 2L23 4L20 7L22 9L19 12L17 10L15 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            transform="translate(-1 -1) scale(.95)"/>
+                    </svg>
 
-                        <div class="key-tags">
-                            <span class="tag tag-purple">Daily habit</span>
-                            <span class="tag tag-neutral">High priority</span>
-                        </div>
-                    </div>
-
-                    <div class="key-action">
-                        <span class="habit-indicator">
-                            <span class="status-dot"></span>
-                            Habit setup
-                        </span>
-
-                        <button type="button" class="secondary-button"
-                                id="editKeyButton">
-                            Configure
-                        </button>
-                    </div>
+                    <input
+                        type="text"
+                        id="reminderItem"
+                        name="reminderItem"
+                        placeholder="e.g. House keys, wallet, ID card..."
+                        autocomplete="off"
+                        maxlength="80"
+                        required
+                    >
                 </div>
 
-                <!-- Key reminder settings -->
-                <div class="settings-grid">
-                    <div class="setting-box">
-                        <div class="setting-icon">⌂</div>
-                        <div>
-                            <h4>When I arrive home</h4>
-                            <p>Remind me to put my keys in their place.</p>
-                        </div>
-                        <span class="setting-arrow">→</span>
-                    </div>
-
-                    <div class="setting-box">
-                        <div class="setting-icon">↗</div>
-                        <div>
-                            <h4>When I leave home</h4>
-                            <p>Remind me to check that I have my keys.</p>
-                        </div>
-                        <span class="setting-arrow">→</span>
-                    </div>
-                </div>
-
-                <div class="section-footnote">
-                    <span>✦</span>
-                    Location-based reminders will be configured in a later step.
-                </div>
-            </section>
-
-            <!-- Daily routine -->
-            <section class="section-card" id="routines">
-                <div class="section-heading">
-                    <div>
-                        <span class="section-eyebrow">SMALL ACTIONS, BETTER HABITS</span>
-                        <h2>My daily routine</h2>
-                        <p>Build a repeatable routine for the things you often forget.</p>
-                    </div>
-
-                    <button type="button" class="primary-button"
-                            id="addRoutineButton">
-                        <span>＋</span> Add routine
-                    </button>
-                </div>
-
-                <form id="routineForm" class="routine-form">
-                    <div class="form-group">
-                        <label for="routineName">What do you want to remember?</label>
-                        <input
-                            type="text"
-                            id="routineName"
-                            placeholder="e.g. Put keys on the key holder"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="routineTrigger">When should I remind you?</label>
-                            <select id="routineTrigger" required>
-                                <option value="home-arrival">When I arrive home</option>
-                                <option value="home-exit">When I leave home</option>
-                                <option value="morning">Every morning</option>
-                                <option value="evening">Every evening</option>
-                                <option value="scheduled">At a specific time</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="routineTime">Reminder time</label>
-                            <input type="time" id="routineTime">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="routineNote">Extra instructions <span>(optional)</span></label>
-                        <textarea
-                            id="routineNote"
-                            rows="2"
-                            placeholder="e.g. Place the keys in the bowl near the main door."
-                        ></textarea>
-                    </div>
-
-                    <div class="form-footer">
-                        <p>Make the right action easy to repeat.</p>
-                        <button type="submit" class="primary-button">
-                            Save routine
-                        </button>
-                    </div>
-                </form>
-
-                <div class="routine-list" id="routineList">
-                    <div class="empty-state" id="emptyRoutineState">
-                        <div class="empty-state-icon">↻</div>
-                        <h3>Your routines will appear here.</h3>
-                        <p>Create your first routine to start building a consistent habit.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Alert preferences -->
-            <section class="section-card" id="settings">
-                <div class="section-heading">
-                    <div>
-                        <span class="section-eyebrow">MAKE IT HARD TO MISS</span>
-                        <h2>Reminder preferences</h2>
-                        <p>Choose how your future phone reminders should behave.</p>
-                    </div>
-                </div>
-
-                <div class="preference-list">
-
-                    <div class="preference-row">
-                        <div class="preference-icon">♫</div>
-                        <div class="preference-info">
-                            <h4>Sound alerts</h4>
-                            <p>Play an audible reminder when a routine triggers.</p>
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox" id="soundPreference" checked>
-                            <span class="switch-slider"></span>
-                        </label>
-                    </div>
-
-                    <div class="preference-row">
-                        <div class="preference-icon">〰</div>
-                        <div class="preference-info">
-                            <h4>Vibration</h4>
-                            <p>Use vibration to get your attention.</p>
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox" id="vibrationPreference" checked>
-                            <span class="switch-slider"></span>
-                        </label>
-                    </div>
-
-                    <div class="preference-row">
-                        <div class="preference-icon">⟳</div>
-                        <div class="preference-info">
-                            <h4>Repeat until acknowledged</h4>
-                            <p>Keep reminding me until I confirm the action.</p>
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox" id="repeatPreference" checked>
-                            <span class="switch-slider"></span>
-                        </label>
-                    </div>
-
-                </div>
-
-                <p class="settings-notice">
-                    These controls are interface preferences for now.
-                    Actual sound, vibration and background alerts require JavaScript
-                    and, for reliable Android behaviour, native integration.
+                <p class="helper-text">
+                    Example: Keys, wallet, charger, college ID...
                 </p>
             </section>
 
-            <footer class="page-footer">
-                <span>KEYMATE © 2026</span>
-                <span>Remember less. Live more. ✦</span>
-            </footer>
+            <!-- Section 2: Reminder interval -->
+            <section class="panel" aria-labelledby="intervalHeading">
 
-        </main>
-    </div>
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <h2 id="intervalHeading">Kitne gap par?</h2>
+                </div>
 
-    <!-- Future active reminder overlay -->
-    <section class="alert-overlay" id="activeReminder" hidden>
-        <div class="alert-panel">
-            <div class="alert-symbol">🔑</div>
-            <span class="section-eyebrow">KEYMATE REMINDER</span>
-            <h2 id="alertTitle">Have you put your keys away?</h2>
-            <p id="alertDescription">
-                Put your keys in their designated place before continuing.
-            </p>
+                <p class="section-description">
+                    Reminder repeat hone ke beech ka gap.
+                </p>
 
-            <button type="button" class="primary-button" id="acknowledgeButton">
-                Done — I've checked
-            </button>
+                <div class="interval-options" id="intervalOptions">
 
-            <p class="alert-footnote">
-                This reminder will remain active until you acknowledge it.
-            </p>
-        </div>
-    </section>
+                    <button
+                        class="interval-option"
+                        type="button"
+                        data-interval="1"
+                        aria-pressed="false"
+                    >
+                        1 min
+                    </button>
 
+                    <button
+                        class="interval-option selected"
+                        type="button"
+                        data-interval="5"
+                        aria-pressed="true"
+                    >
+                        <span class="selected-check" aria-hidden="true">✓</span>
+                        5 min
+                    </button>
+
+                    <button
+                        class="interval-option"
+                        type="button"
+                        data-interval="10"
+                        aria-pressed="false"
+                    >
+                        10 min
+                    </button>
+
+                    <button
+                        class="interval-option"
+                        type="button"
+                        data-interval="30"
+                        aria-pressed="false"
+                    >
+                        30 min
+                    </button>
+
+                </div>
+
+                <div class="interval-summary">
+                    <div class="summary-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9"
+                                stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <p class="summary-label">Reminder interval</p>
+                        <p class="summary-value" id="intervalValue">
+                            5 minutes
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Section 3: Leaving home status -->
+            <section class="panel status-panel"
+                aria-labelledby="statusHeading">
+
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+                    <h2 id="statusHeading">Ghar se nikle?</h2>
+                </div>
+
+                <p class="section-description">
+                    Apni current situation select karo.
+                </p>
+
+                <div class="status-options">
+
+                    <label class="status-option selected" id="leftHomeCard">
+                        <input
+                            type="radio"
+                            name="homeStatus"
+                            value="left"
+                            checked
+                        >
+
+                        <span class="status-check" aria-hidden="true">✓</span>
+
+                        <svg class="status-icon" viewBox="0 0 40 40"
+                            fill="none" aria-hidden="true">
+                            <rect x="5" y="4" width="21" height="32"
+                                rx="3" stroke="currentColor"
+                                stroke-width="2.4"/>
+                            <circle cx="20" cy="20" r="1.5"
+                                fill="currentColor"/>
+                            <path d="M20 20H36M30 14L36 20L30 26"
+                                stroke="currentColor"
+                                stroke-width="2.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                        </svg>
+
+                        <span class="status-label">Nikal gaya</span>
+                    </label>
+
+                    <label class="status-option" id="atHomeCard">
+                        <input
+                            type="radio"
+                            name="homeStatus"
+                            value="home"
+                        >
+
+                        <span class="status-check" aria-hidden="true">✓</span>
+
+                        <svg class="status-icon" viewBox="0 0 40 40"
+                            fill="none" aria-hidden="true">
+                            <path d="M3 19L20 4L37 19"
+                                stroke="currentColor"
+                                stroke-width="2.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                            <path d="M8 17V36H32V17"
+                                stroke="currentColor"
+                                stroke-width="2.4"
+                                stroke-linejoin="round"/>
+                            <path d="M16 36V25H24V36"
+                                stroke="currentColor"
+                                stroke-width="2.4"
+                                stroke-linejoin="round"/>
+                        </svg>
+
+                        <span class="status-label">Ghar par hoon</span>
+                    </label>
+
+                </div>
+
+                <!-- Save area -->
+                <div class="save-area">
+                    <button type="submit" class="save-button">
+                        <svg viewBox="0 0 24 24" fill="none"
+                            aria-hidden="true">
+                            <path d="M5 3H17L21 7V21H3V3H5Z"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linejoin="round"/>
+                            <path d="M7 3V10H16V3M7 21V14H17V21"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linejoin="round"/>
+                        </svg>
+
+                        <span>Save Reminder</span>
+                    </button>
+
+                    <p class="save-message" id="saveMessage"
+                        role="status" aria-live="polite"></p>
+
+                    <p class="footer-note">
+                        Simple reminders. Fewer forgotten essentials.
+                    </p>
+                </div>
+
+            </section>
+
+        </form>
+
+    </main>
 </body>
-
-<script src="./objectReminder.js"></script>
 </html>
