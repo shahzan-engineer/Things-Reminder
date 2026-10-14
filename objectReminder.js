@@ -1,11 +1,34 @@
 const objectName = document.querySelector("#reminderItem")
-const selectOption = document.querySelector(".interval-options")
-const selectedOption = document.querySelector(".interval-option selected")
-const reminderInterval = document.querySelector("#intervalValue")
-const statusOptionSelected = document.querySelector("#status-option selected")
-const statusOption = document.querySelector(".status-options")
-const saveButton = document.querySelector(".save-button")
-const statusBtn  = document.querySelector(".interval-option")
+const form = document.querySelector("#reminderForm")
 
 
 
+
+form.addEventListener("submit"  , function(e){
+
+   e.preventDefault()
+
+
+
+  let theObject  = objectName.value
+
+ 
+
+ validateInputs(theObject)
+
+
+ form.reset()
+
+})
+
+
+function validateInputs(x){
+
+
+
+    console.log(x)
+
+
+
+
+}
