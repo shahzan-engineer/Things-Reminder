@@ -329,7 +329,7 @@ input:focus-visible {
     transform: scale(0.98);
 }
 
-.interval-option.selected {
+.interval-option-selected {
     background: linear-gradient(
         135deg,
         #392753,
@@ -355,7 +355,7 @@ input:focus-visible {
     font-weight: 700;
 }
 
-.interval-option.selected .selected-check {
+.interval-option-selected .selected-check {
     display: inline-grid;
 }
 
@@ -496,7 +496,7 @@ input:focus-visible {
     text-align: center;
 }
 
-.status-option.selected .status-label {
+.status-option-selected .status-label {
     color: var(--purple-light);
 }
 
@@ -653,7 +653,7 @@ input:focus-visible {
         font-size: 14px;
     }
 
-    .interval-option.selected {
+    .interval-option-selected {
         gap: 6px;
     }
 
