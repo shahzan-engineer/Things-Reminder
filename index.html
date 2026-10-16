@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="KeyMate helps you remember the important things before leaving home.">
+
+    <title>KeyMate — Never Forget What Matters</title>
+
+    <link rel="stylesheet" href="objectReminder.css">
+
+    <!-- JavaScript tu khud likhega -->
+    <script src="objectReminder.js" defer></script>
+</head>
+
+<body>
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="8" cy="15" r="5" stroke="currentColor" stroke-width="2.2" />
+                        <path d="M11.5 11.5L21 2L23 4L20 7L22 9L19 12L17 10L15 12" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                            transform="translate(-1 -1) scale(.95)" />
+                    </svg>
+                </div>
+
+                <div>
+                    <h1 class="brand-name">Key<span>Mate</span></h1>
+                    <p class="brand-tagline">
+                        Never forget what matters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="theme-indicator" aria-label="Dark theme enabled">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20.2 15.1A8.7 8.7 0 0 1 8.9 3.8
+                    8.9 8.9 0 1 0 20.2 15.1Z" />
+                </svg>
+            </div>
+        </header>
+
+        <form id="reminderForm">
+
+            <!-- Section 1: Reminder item -->
+            <section class="panel" aria-labelledby="itemHeading">
+
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <h2 id="itemHeading">Kya remind karana hai?</h2>
+                </div>
+
+                <label for="reminderItem" class="field-label">
+                    Kis cheez ki reminder chahiye?
+                </label>
+
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="8" cy="15" r="5" stroke="currentColor" stroke-width="2" />
+                        <path d="M11.5 11.5L21 2L23 4L20 7L22 9L19 12L17 10L15 12" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            transform="translate(-1 -1) scale(.95)" />
+                    </svg>
+
+                    <input type="text" id="reminderItem" name="reminderItem"
+                        placeholder="e.g. House keys, wallet, ID card..." autocomplete="off" maxlength="80" required>
+                </div>
+
+                <p class="helper-text">
+                    Example: Keys, wallet, charger, college ID...
+                </p>
+            </section>
+
+            <!-- Section 2: Reminder interval -->
+            <section class="panel" aria-labelledby="intervalHeading">
+
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <h2 id="intervalHeading">Kitne gap par?</h2>
+                </div>
+
+                <p class="section-description">
+                    Reminder repeat hone ke beech ka gap.
+                </p>
+
+                <div class="interval-options" id="intervalOptions">
+
+                    <button class="interval-option" type="button" data-interval="1" aria-pressed="false">
+                        1 min
+                    </button>
+
+                    <button class="interval-option" type="button" data-interval="5" aria-pressed="true">
+                        5 min
+                    </button>
+
+                    <button class="interval-option" type="button" data-interval="10" aria-pressed="false">
+                        10 min
+                    </button>
+
+                    <button class="interval-option" type="button" data-interval="30" aria-pressed="false">
+                        30 min
+                    </button>
+
+                </div>
+
+                <div class="interval-summary">
+                    <div class="summary-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+                            <path d="M12 7V12L15 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <p class="summary-label">Reminder interval</p>
+                        <p class="summary-value" id="intervalValue">
+                            minutes
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Section 3: Leaving home status -->
+            <section class="panel status-panel" aria-labelledby="statusHeading">
+
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+                    <h2 id="statusHeading">Ghar se nikle?</h2>
+                </div>
+
+                <p class="section-description">
+                    Apni current situation select karo.
+                </p>
+
+                <div class="status-options">
+
+                    <label class="status-option selected" id="leftHomeCard">
+                        <input type="radio" name="homeStatus" value="left" checked>
+
+                        <span class="status-check" aria-hidden="true">✓</span>
+
+                        <svg class="status-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                            <rect x="5" y="4" width="21" height="32" rx="3" stroke="currentColor" stroke-width="2.4" />
+                            <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+                            <path d="M20 20H36M30 14L36 20L30 26" stroke="currentColor" stroke-width="2.4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span class="status-label">Nikal gaya</span>
+                    </label>
+
+                    <label class="status-option" id="atHomeCard">
+                        <input type="radio" name="homeStatus" value="home">
+
+                        <span class="status-check" aria-hidden="true">✓</span>
+
+                        <svg class="status-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                            <path d="M3 19L20 4L37 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M8 17V36H32V17" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+                            <path d="M16 36V25H24V36" stroke="currentColor" stroke-width="2.4"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        <span class="status-label">Ghar par hoon</span>
+                    </label>
+
+                </div>
+
+                <!-- Save area -->
+                <div class="save-area">
+                    <button type="submit" class="save-button">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M5 3H17L21 7V21H3V3H5Z" stroke="currentColor" stroke-width="2"
+                                stroke-linejoin="round" />
+                            <path d="M7 3V10H16V3M7 21V14H17V21" stroke="currentColor" stroke-width="2"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <button type="button" id="pauseMusic">
+                            Pause Music
+                        </button> <br>
+                        <button type="button" id="stopReminder">
+                            Stop Reminder
+                        </button> <br>
+
+                        <span>Save Reminder</span>
+                    </button>
+
+                    <p class="save-message" id="saveMessage" role="status" aria-live="polite"></p>
+
+                    <p class="footer-note">
+                        Simple reminders. Fewer forgotten essentials.
+                    </p>
+                </div>
+
+            </section>
+
+        </form>
+
+    </main>
+
+    <audio id="reminderSound" preload="auto" src="./Charly_Puth_-_Attention_(mp3.pm).mp3"></audio>
+
+</body>
+
+</html>
